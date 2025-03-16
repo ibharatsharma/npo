@@ -22,7 +22,7 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/features">Features</a>
+                        <a class="nav-link" href="/members/registration">Reg</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>

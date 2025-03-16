@@ -25,7 +25,7 @@ public class OttSuccessHandler implements OneTimeTokenGenerationSuccessHandler {
                 .replacePath(request.getContextPath())
                 .replaceQuery(null)
                 .fragment(null)
-                .path("/login/ott") // where to redirect after successful login
+                .path("/login/ott") // where to redirect on clicking magic link
                 .queryParam("token", oneTimeToken.getTokenValue());
 
         String magicLink = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+builder.toUriString();
