@@ -18,21 +18,21 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping(path = "/registration")
-    public String showRegistrationform(final Model model) {
+    public String showRegistrationForm(final Model model) {
         var m = new MemberDto(null,null,null,null);
-        model.addAttribute("member", m);
+        model.addAttribute("m", m);
 
         return "memberRegistration";
     }
 
     @PostMapping(path = "/registration")
-    public String processRegistrationform(@Validated MemberDto member, final Model model) {
+    public String processRegistrationForm(@Validated MemberDto m, final Model model) {
         // persist into database.
-        model.addAttribute("member", new MemberDto(null,null,null,null));
+        model.addAttribute("m", new MemberDto(null,null,null,null));
         model.addAttribute("message", "Registration Successful");
 
-        memberService.registerMember(member);
-        log.info("Member registered: {}", member);
+        memberService.registerMember(m);
+        log.info("Member registered: {}", m);
         return "memberRegistration";
     }
 

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public record MemberDto(
         String firstName,
-        String lastname,
+        String lastName,
         LocalDate dob,
         String gender
 ) {

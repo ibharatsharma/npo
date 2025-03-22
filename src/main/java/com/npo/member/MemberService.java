@@ -18,7 +18,7 @@ public class MemberService {
     private Member convert(MemberDto memberDto) {
         return new Member(null,
                 memberDto.firstName(),
-                memberDto.lastname(),
+                memberDto.lastName(),
                 memberDto.dob(),
                 memberDto.gender(),
                 null);
