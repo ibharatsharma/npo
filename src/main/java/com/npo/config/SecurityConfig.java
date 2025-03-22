@@ -2,11 +2,13 @@ package com.npo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -20,6 +22,7 @@ public class SecurityConfig {
                         //.requestMatchers("/").permitAll() // home page access for everyone
                         .requestMatchers("/ott/sent").permitAll() // ott sent page
                         .requestMatchers("/login/ott").permitAll()
+                        .requestMatchers("/members/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())
@@ -27,10 +30,26 @@ public class SecurityConfig {
                 .build();
     }
 
+    /*
     @Bean
     InMemoryUserDetailsManager inMemoryUserDetailsManager(){
-        var user = User.withUsername("user").password("{noop}password").build();
+        var user = User.withUsername("user")
+                .password("{noop}password")
+                .authorities()
+                .build();
         return new InMemoryUserDetailsManager(user);
+    }*/
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+        //return NoOpPasswordEncoder.getInstance();
     }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
 
 }
