@@ -7,7 +7,7 @@
     <div class="container mt-4">
         <div class="jumbotron bg-primary-subtle p-5 rounded">
             <h1 class="display-4">Create New Event</h1>
-            <p class="lead">Provide deta.</p>
+            <p class="lead">Provide details to create an event.</p>
             <hr class="my-4">
             <form action="/events" method="POST">
                 <div class="row">
