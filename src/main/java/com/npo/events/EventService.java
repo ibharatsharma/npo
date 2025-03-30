@@ -3,6 +3,7 @@ package com.npo.events;
 import com.npo.domain.member.domain.event.Event;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +21,11 @@ public class EventService {
 
     public Optional<Event> getEventById(Long eventId){
         return eventDao.findById(eventId);
+    }
+
+    public void findAllFutureEvents(Event event){
+        Example<Event> example = Example.of(event);
+        eventDao.findAll(example);
     }
 
     public void updateEvent(Event event){
