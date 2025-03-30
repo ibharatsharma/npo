@@ -5,7 +5,7 @@
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
-        <div class="jumbotron bg-light p-5 rounded">
+        <div class="jumbotron bg-primary-subtle p-5 rounded">
             <h1 class="display-4">Create New Event</h1>
             <p class="lead">Provide deta.</p>
             <hr class="my-4">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="startDate" class="form-label">Start Date:</label>
-                    <input type="date"
+                    <input type="datetime-local"
                            class="form-control"
                            id="startDate"
                            placeholder="Start Date"
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="endDate" class="form-label">End Date:</label>
-                    <input type="date"
+                    <input type="datetime-local"
                            class="form-control"
                            id="endDate"
                            placeholder="End Date"
