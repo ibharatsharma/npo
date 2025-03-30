@@ -1,6 +1,6 @@
 package com.npo.member;
 
-import com.npo.domain.member.Member;
+import com.npo.domain.member.Participant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +10,18 @@ public class MemberService {
 
     private final MemberDao memberDao;
 
-    public Member registerMember(MemberDto memberDto) {
+    public Participant registerParticipant(MemberDto memberDto) {
         var member = convert(memberDto);
         return memberDao.save(member);
     }
 
-    private Member convert(MemberDto memberDto) {
-        return new Member(null,
+    private Participant convert(MemberDto memberDto) {
+        return new Participant(null,
                 memberDto.firstName(),
                 memberDto.lastName(),
                 memberDto.dob(),
                 memberDto.gender(),
+                null,
                 null);
 
     }

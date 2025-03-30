@@ -22,6 +22,9 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/events/new">New Event</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/members/registration">Reg</a>
                     </li>
                     <li class="nav-item">

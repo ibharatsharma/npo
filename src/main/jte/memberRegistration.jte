@@ -11,7 +11,7 @@
             <hr class="my-4">
             <form action="/members/registration" method="POST">
                 <div class="row">
-                    <div class="col mb-3 mt-3">
+                    <div class="col-md-6 mb-3 mt-3">
                         <label for="firstName" class="form-label">First Name:</label>
                         <input type="text"
                                class="form-control"
@@ -20,7 +20,7 @@
                                name="firstName"
                                value="${m.firstName()}">
                     </div>
-                    <div class="col mb-3 mt-3">
+                    <div class="col-md-6 mb-3 mt-3">
                         <label for="lastName" class="form-label">Last Name:</label>
                         <input type="text"
                                class="form-control"
@@ -30,12 +30,12 @@
                                value="${m.lastName()}">
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="dob" class="form-label">Date of Birth:</label>
                     <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob"
                            value="${DateFormatter.format(m.dob(),"dd-MM-yyyy")}">
                 </div>
-                <div class="form-check mb-3">
+                <div class="col-md-6 form-check mb-3">
                     <label class="form-check-label" for="radio1">Gender:</label>
                     <div class="form-check">
                         <input type="radio" class="form-check-input" id="gender1" name="gender" value="Male" >Male
@@ -50,6 +50,7 @@
                         <label class="form-check-label" for="radio1"></label>
                     </div>
                 </div>
+                <hr />
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

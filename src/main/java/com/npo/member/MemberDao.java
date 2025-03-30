@@ -1,10 +1,10 @@
 package com.npo.member;
 
-import com.npo.domain.member.Member;
+import com.npo.domain.member.Participant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MemberDao extends JpaRepository<Member, Long> {
+public interface MemberDao extends JpaRepository<Participant, Long> {
 
 }
