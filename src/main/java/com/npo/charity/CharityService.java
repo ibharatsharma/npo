@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CharityService {
 
-    private final ChartiyDao chartiyDao;
+    private final CharityDao chartiyDao;
 
     public void saveCharity(final Charity charity){
         chartiyDao.save(charity);

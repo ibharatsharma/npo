@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ChartiyDao extends JpaRepository<Charity, Long> {
+public interface CharityDao extends JpaRepository<Charity, Long> {
 
     public Optional<Charity> findByName(String name);
 }
