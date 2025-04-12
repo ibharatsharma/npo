@@ -9,6 +9,5 @@ public class CharityDto {
     private String purpose;             // The charitable purpose or mission
     private String address;             // Physical address of the charity
     private String contactInfo;         // Phone number or email for communication
-    private double funds;               // Total funds available
     private boolean isActive;           // Status of the charity (active/inactive)
 }
