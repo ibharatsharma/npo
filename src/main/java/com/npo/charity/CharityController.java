@@ -22,4 +22,10 @@ public class CharityController {
        return "showCharities";
     }
 
+    @GetMapping("/registration")
+    public String showRegistrationFrom(Model model){
+        model.addAttribute("charity", new CharityDto());
+        return "charityRegistration";
+    }
+
 }
