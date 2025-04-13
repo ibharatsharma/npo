@@ -40,6 +40,7 @@ public class CharityService {
     private Charity dtoToCharity(CharityDto dto){
         Charity charity = new Charity();
         charity.setName(dto.getName());
+        charity.setRegistrationNumber(dto.getRegistrationNumber());
         charity.setPurpose(dto.getPurpose());
         charity.setAddress(dto.getAddress());
         charity.setContactInfo(dto.getContactInfo());
