@@ -1,7 +1,10 @@
 @import com.npo.charity.CharityDto
-@import com.npo.common.DateFormatter
+@import org.springframework.validation.BindingResult
 
 @param CharityDto charity
+@param String error = null
+@param String message = null
+@param BindingResult bindingResult = null
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -9,10 +12,24 @@
             <h1 class="display-4">Charity Registration</h1>
             <p class="lead">Register your charity with us.</p>
             <hr class="my-4">
+            @if(error != null)
+                <div class="alert alert-danger" role="alert">
+                    ${error}
+                </div>
+            @endif
+            @if(message != null)
+                <div class="alert alert-success" role="alert">
+                    ${message}
+                </div>
+            @endif
+
             <form action="/charities/registration" method="POST">
 
                 <div class="mb-3 mt-3">
                     <label for="name" class="form-label">Name:</label>
+                    @if(bindingResult != null && bindingResult.hasFieldErrors("name"))
+                        <p class="text-danger">${bindingResult.getFieldError("name").getDefaultMessage()}</p>
+                    @endif
                     <input type="text"
                            class="form-control"
                            id="name"
@@ -22,6 +39,9 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="registrationNumber" class="form-label">Registration Number:</label>
+                    @if(bindingResult != null && bindingResult.hasFieldErrors("registrationNumber"))
+                        <p class="text-danger">${bindingResult.getFieldError("registrationNumber").getDefaultMessage()}</p>
+                    @endif
                     <input type="text"
                            class="form-control"
                            id="registrationNumber"
@@ -31,6 +51,9 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="purpose" class="form-label">Purpose:</label>
+                    @if(bindingResult != null && bindingResult.hasFieldErrors("purpose"))
+                        <p class="text-danger">${bindingResult.getFieldError("purpose").getDefaultMessage()}</p>
+                    @endif
                     <textarea class="form-control"
                               id="purpose"
                               placeholder="Purpose of the Charity.."
@@ -38,6 +61,9 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="address" class="form-label">Address:</label>
+                    @if(bindingResult != null && bindingResult.hasFieldErrors("address"))
+                        <p class="text-danger">${bindingResult.getFieldError("address").getDefaultMessage()}</p>
+                    @endif
                     <input type="text"
                            class="form-control"
                            id="address"
@@ -47,6 +73,9 @@
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="contactInfo" class="form-label">Contact Info / Phone:</label>
+                    @if(bindingResult != null && bindingResult.hasFieldErrors("contactInfo"))
+                        <p class="text-danger">${bindingResult.getFieldError("contactInfo").getDefaultMessage()}</p>
+                    @endif
                     <input type="text"
                            class="form-control"
                            id="contactInfo"

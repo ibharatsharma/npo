@@ -1,10 +1,12 @@
 package com.npo.charity;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,9 +35,20 @@ public class CharityController {
     }
 
     @PostMapping("/registration")
-    public String processRegistrationFrom(@Validated CharityDto charity, Model model){
+    public String processRegistrationFrom(@Valid CharityDto charity, Model model){
         log.info("charity - {}", charity);
+        charityService.registerCharity(charity);
         model.addAttribute("charity", new CharityDto());
+        model.addAttribute("message", "Charity registered successfully");
+        return "charityRegistration";
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public String handleValidationException(MethodArgumentNotValidException exception, Model model){
+        CharityDto charity = (CharityDto) exception.getBindingResult().getTarget();
+        model.addAttribute("charity", charity);
+        model.addAttribute("error", "Please fill out required fields.");
+        model.addAttribute("bindingResult", exception.getBindingResult());
         return "charityRegistration";
     }
 

@@ -16,8 +16,10 @@ public class CharityService {
 
     private final CharityDao chartiyDao;
 
-    public void saveCharity(final Charity charity){
-        chartiyDao.save(charity);
+    public Charity registerCharity(final CharityDto charity){
+        Charity registeredCharity = chartiyDao.save(dtoToCharity(charity));
+        log.info("Charity {} registered with id {}", registeredCharity.getName(), registeredCharity.getId());
+        return registeredCharity;
     }
 
     public Optional<Charity> findCharity(long charityId){
@@ -33,6 +35,16 @@ public class CharityService {
 
     public List<Charity> finalAllCharities(){
         return chartiyDao.findAll();
+    }
+
+    private Charity dtoToCharity(CharityDto dto){
+        Charity charity = new Charity();
+        charity.setName(dto.getName());
+        charity.setPurpose(dto.getPurpose());
+        charity.setAddress(dto.getAddress());
+        charity.setContactInfo(dto.getContactInfo());
+        charity.setActive(dto.isActive());
+        return charity;
     }
 
 
