@@ -1,6 +1,8 @@
 package com.npo.charity;
 
 import com.npo.domain.Charity;
+import com.npo.login.CustomUserDetailsService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
@@ -15,10 +17,13 @@ import java.util.Optional;
 public class CharityService {
 
     private final CharityDao chartiyDao;
+    private final CustomUserDetailsService customUserDetailsService;
 
+    @Transactional
     public Charity registerCharity(final CharityDto charity){
         Charity registeredCharity = chartiyDao.save(dtoToCharity(charity));
         log.info("Charity {} registered with id {}", registeredCharity.getName(), registeredCharity.getId());
+        customUserDetailsService.saveUserDetails(registeredCharity.getId());
         return registeredCharity;
     }
 

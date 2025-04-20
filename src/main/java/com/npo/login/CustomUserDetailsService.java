@@ -1,5 +1,6 @@
 package com.npo.login;
 
+import com.npo.domain.NpoRoles;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -33,5 +35,20 @@ public class CustomUserDetailsService implements UserDetailsService {
             log.info("User not found, throwing exception. {}", msg);
             throw new UsernameNotFoundException(msg);
         }
+    }
+
+    public void saveUserDetails(Long charityId){
+
+        Authority authority = new Authority();
+        authority.setId(6L);
+        authority.setName(NpoRoles.CHARITY_ADMIN.toString());
+
+        User charity = new User();
+        charity.setUsername("c" + charityId);
+        charity.setPassword("pass");
+        charity.setAuthorities(Set.of(authority));
+
+        User persistedCharity = userRepository.save(charity);
+        log.info("Charity User created for charityId={}", charityId);
     }
 }

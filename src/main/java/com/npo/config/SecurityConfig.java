@@ -28,6 +28,11 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+                /*.formLogin(login -> login
+                        .loginPage("/login")
+                        .successHandler(new CustomAuthenticationSuccessHandler())
+                        .permitAll()
+                )*/
                 .formLogin(Customizer.withDefaults())
                 .oneTimeTokenLogin(Customizer.withDefaults())
                 .build();

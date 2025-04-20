@@ -1,5 +1,6 @@
 package com.npo.charity;
 
+import com.npo.domain.Charity;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +38,9 @@ public class CharityController {
     @PostMapping("/registration")
     public String processRegistrationFrom(@Valid CharityDto charity, Model model){
         log.info("charity - {}", charity);
-        charityService.registerCharity(charity);
+        Charity registeredCharity = charityService.registerCharity(charity);
         model.addAttribute("charity", new CharityDto());
-        model.addAttribute("message", "Charity registered successfully");
+        model.addAttribute("message", registeredCharity.getName() + " charity registered successfully!");
         return "charityRegistration";
     }
 
