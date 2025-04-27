@@ -23,12 +23,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/members/registration">Reg</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">logout</a>
-                </li>
+                @if(currentUsername == null)
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">logout</a>
+                    </li>
+                @endif
             </ul>
             @if(currentUsername != null)
                 <div class="d-flex badge text-bg-secondary">
