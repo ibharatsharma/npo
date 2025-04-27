@@ -3,7 +3,6 @@ package com.npo.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,20 +20,25 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        //.requestMatchers("/").permitAll() // home page access for everyone
+                        .requestMatchers("/", "/login", "/error").permitAll() // home page access for everyone
                         .requestMatchers("/ott/sent").permitAll() // ott sent page
                         .requestMatchers("/login/ott").permitAll()
                         .requestMatchers("/members/registration").permitAll()
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                /*.formLogin(login -> login
+                .formLogin(login -> login
                         .loginPage("/login")
                         .successHandler(new CustomAuthenticationSuccessHandler())
                         .permitAll()
-                )*/
-                .formLogin(Customizer.withDefaults())
-                .oneTimeTokenLogin(Customizer.withDefaults())
+                )
+                //.formLogin(Customizer.withDefaults())
+                //.oneTimeTokenLogin(Customizer.withDefaults())
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                )
+
                 .build();
     }
 

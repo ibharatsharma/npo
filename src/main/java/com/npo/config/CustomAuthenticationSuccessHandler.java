@@ -23,7 +23,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         if (roles.contains("ROLE_ADMIN") || roles.contains("ROLE_SUPER_ADMIN")) {
             response.sendRedirect("/admin/dashboard");
         } else if (roles.contains("ROLE_WORKER")) {
-            response.sendRedirect("/charities");
+            response.sendRedirect("/dashboard");
         } else {
             response.sendRedirect("/");
         }

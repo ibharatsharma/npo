@@ -55,4 +55,4 @@
             </form>
         </div>
     </div>
-`)
+`, title = "Member Registration")

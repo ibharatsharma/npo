@@ -90,4 +90,4 @@
             @endif
         </div>
     </div>
-`)
+`, title = "Charity Registration")

@@ -23,4 +23,4 @@
         </div>
     @endfor
     </div>
-`)
+`, title = "Charities")

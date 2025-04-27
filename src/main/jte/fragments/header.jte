@@ -1,3 +1,5 @@
+@param String currentUsername = null
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">U.K. Charities</a>
@@ -22,9 +24,17 @@
                     <a class="nav-link" href="/members/registration">Reg</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">logout</a>
                 </li>
             </ul>
+            @if(currentUsername != null)
+                <div class="d-flex badge text-bg-secondary">
+                    ${currentUsername}
+                </div>
+            @endif
         </div>
     </div>
 </nav>

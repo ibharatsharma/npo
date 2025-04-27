@@ -50,4 +50,4 @@
             </form>
         </div>
     </div>
-`)
+`, title = "New Event")
