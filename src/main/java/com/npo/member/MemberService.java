@@ -22,6 +22,7 @@ public class MemberService {
                 memberDto.dob(),
                 memberDto.gender(),
                 null,
+                null,
                 null);
 
     }

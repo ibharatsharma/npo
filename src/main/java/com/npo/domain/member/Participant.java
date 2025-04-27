@@ -1,5 +1,6 @@
 package com.npo.domain.member;
 
+import com.npo.domain.Charity;
 import com.npo.domain.member.domain.event.Event;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,4 +33,11 @@ public class Participant {
             inverseJoinColumns = @JoinColumn(name = "event_id")
     )
     private List<Event> events;
+    @ManyToMany(cascade = CascadeType.DETACH)
+    @JoinTable(
+            name = "participant_charity",
+            joinColumns = @JoinColumn(name = "participant_id"),
+            inverseJoinColumns = @JoinColumn(name = "charity_id")
+    )
+    private List<Charity> charities;
 }

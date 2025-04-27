@@ -1,7 +1,11 @@
 package com.npo.domain;
 
+import com.npo.domain.member.Participant;
+import com.npo.domain.member.domain.event.Event;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,5 +25,7 @@ public class Charity {
     private String address;             // Physical address of the charity
     private String contactInfo;         // Phone number or email for communication
     private boolean isActive;
-
+    @ManyToMany(mappedBy = "charities", cascade = CascadeType.DETACH)
+    private List<Participant> participants;
+    private List<Event> events;
 }
