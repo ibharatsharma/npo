@@ -5,6 +5,7 @@
 @param String error = null
 @param String message = null
 @param BindingResult bindingResult = null
+@param String currentUsername = null
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -90,4 +91,4 @@
             @endif
         </div>
     </div>
-`, title = "Charity Registration")
+`, title = "Charity Registration", currentUsername = currentUsername)

@@ -2,6 +2,7 @@
 @import com.npo.common.DateFormatter
 
 @param MemberDto m
+@param String currentUsername = null
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -55,4 +56,4 @@
             </form>
         </div>
     </div>
-`, title = "Member Registration")
+`, title = "Member Registration", currentUsername = currentUsername)

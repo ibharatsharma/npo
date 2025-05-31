@@ -1,6 +1,6 @@
 package com.npo.events;
 
-import com.npo.domain.member.domain.event.Event;
+import com.npo.domain.Event;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

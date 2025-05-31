@@ -1,11 +1,12 @@
-package com.npo.domain.member.domain.event;
+package com.npo.domain;
 
-import com.npo.domain.member.Participant;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Builder
@@ -25,9 +26,9 @@ public class Event {
     private LocalDateTime endDate;
     private String location;
     private String organizer;
-    @ManyToMany(mappedBy = "events")
-    private List<Participant> participants;
     private Boolean isPrivate;
     private String category;
-
+    @ManyToOne
+    @JoinColumn(name = "charity_id", nullable = false)
+    private Charity charity;
 }

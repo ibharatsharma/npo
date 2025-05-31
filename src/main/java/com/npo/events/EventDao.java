@@ -1,6 +1,6 @@
 package com.npo.events;
 
-import com.npo.domain.member.domain.event.Event;
+import com.npo.domain.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 

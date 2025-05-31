@@ -1,6 +1,6 @@
 package com.npo.events;
 
-import com.npo.domain.member.domain.event.Event;
+import com.npo.domain.Event;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;

@@ -1,7 +1,7 @@
 package com.npo.domain.member;
 
 import com.npo.domain.Charity;
-import com.npo.domain.member.domain.event.Event;
+import com.npo.domain.Event;
 import jakarta.persistence.*;
 import lombok.*;
 
