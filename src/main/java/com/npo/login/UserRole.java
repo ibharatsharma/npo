@@ -1,12 +1,12 @@
 package com.npo.login;
 
 public enum UserRole {
-    ADMIN(1, "Has full access"),
-    COMMS(2, "Manages communications"),
-    COORDINATOR(3, "Coordinates events"),
+    SUPER_ADMIN(1, "Has superuser privileges"),
+    ADMIN(2, "Has full access"),
+    LEADERSHIP(2, "Handles strategic decisions"),
     LEAD(4, "Leads a team"),
-    LEADERSHIP(5, "Handles strategic decisions"),
-    SUPER_ADMIN(6, "Has superuser privileges"),
+    COMMS(5, "Manages communications"),
+    COORDINATOR(6, "Coordinates events"),
     WORKER(7, "Performs assigned tasks");
 
     private final long id;
