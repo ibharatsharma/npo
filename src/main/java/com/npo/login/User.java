@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.Set;
 
@@ -16,6 +17,10 @@ import java.util.Set;
 @Entity
 @Table(name = "SITE_USER")
 public class User implements UserDetails {
+
+    @Serial
+    private static final long serialVersionUID = 19237197691723L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -69,5 +74,14 @@ public class User implements UserDetails {
         return true; // Customize based on your needs
     }
 
+
+    public User(){
+    }
+
+    public User(String username, String password, Set<Authority> authorities){
+        this.username = username;
+        this.password = password;
+        this.authorities = authorities;
+    }
 
 }

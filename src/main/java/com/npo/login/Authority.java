@@ -1,15 +1,15 @@
 package com.npo.login;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 @Getter
 @Setter
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Authority implements GrantedAuthority {
 
     @Id
