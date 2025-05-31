@@ -16,4 +16,10 @@ public class CharityDto {
     @NotBlank(message = "Please provide contact/phone number")
     private String contactInfo;         // Phone number or email for communication
     private boolean isActive;           // Status of the charity (active/inactive)
+    @NotBlank(message = "Please provide email id")
+    private String email;
+    @NotBlank(message = "Password cannot be blank")
+    private String password;
+    @NotBlank(message = "Confirm password cannot be blank")
+    private String confirmedPassword;
 }

@@ -1,6 +1,7 @@
 package com.npo.charity;
 
 import com.npo.domain.Charity;
+import com.npo.events.EventService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CharityController {
 
     private final CharityService charityService;
+    private final EventService eventService;
 
     /**
      * Displays a list of all Charities
@@ -52,5 +54,11 @@ public class CharityController {
         model.addAttribute("bindingResult", exception.getBindingResult());
         return "charityRegistration";
     }
+
+    /* Manage events for a charity */
+
+
+
+
 
 }

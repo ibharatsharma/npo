@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,27 +29,23 @@ public class EventService {
         eventDao.findAll(example);
     }
 
-    public void updateEvent(Event event){
-
-    }
-
-    public void deleteEventById(Long eventId){
-
-    }
-
-    public void deleteAllEvents(){
-
-    }
-
-    public void addMemberToEvent(Long eventId, Long memberId){
-
-    }
-
-    public void removeMemberFromEvent(Long eventId, Long memberId){
+    public void updateEvent(Long charityId, Long eventId, Event event){
 
     }
 
     public boolean isEventFull(Long eventId){
         return false;
+    }
+
+    public List<Event> findByCharityId(Long charityId) {
+        return List.of();
+    }
+
+    public Optional<Event> findById(Long eventId) {
+        return Optional.empty();
+    }
+
+    public void deleteEvent(Long eventId) {
+        throw new RuntimeException("implementation pending");
     }
 }

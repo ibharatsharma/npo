@@ -1,32 +1,49 @@
 package com.npo.events;
 
 import com.npo.domain.Event;
+import com.npo.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(path = "/events")
+@RequestMapping("/charities/{charityId}/events")
 public class EventController {
 
     private final EventService eventService;
 
+    @GetMapping
+    public String getAllEvents(@PathVariable Long charityId, Model model) {
+        List<Event> events = eventService.findByCharityId(charityId);
+        model.addAttribute("events", events);
+        return "event-list"; // Returns event-list.html
+    }
+
+    @GetMapping("/{eventId}")
+    public String getEvent(@PathVariable Long charityId, @PathVariable Long eventId, Model model) {
+        Event event = eventService.findById(eventId)
+                .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
+        model.addAttribute("event", event);
+        return "event-details"; // Returns event-details.html
+    }
+
     @GetMapping("/new")
-    public String showEventForm(final Model model) {
+    public String showEventForm(@PathVariable Long charityId, final Model model) {
         var event = new EventDto();
         model.addAttribute("e", event);
+        model.addAttribute("charityId", charityId);
         return "newEvent";
     }
 
     @PostMapping
-    public String processEventForm(@Validated EventDto eventDto, final Model model) {
+    public String processEventForm(@PathVariable Long charityId, @Validated EventDto eventDto, final Model model) {
         // persist into database.
         log.info("eventDto: {}", eventDto);
 
@@ -38,9 +55,30 @@ public class EventController {
         }else{
             model.addAttribute("e", eventDto);
         }
-        return "newEvent";
+        return "redirect:/charities/" + charityId + "/events";
 
     }
+
+    /**
+     * Update event
+     * @param charityId
+     * @param eventId
+     * @param event
+     * @return
+     */
+    @PutMapping("/{eventId}")
+    public String updateEvent(@PathVariable Long charityId, @PathVariable Long eventId, @ModelAttribute Event event) {
+        eventService.updateEvent(charityId, eventId, event);
+        return "redirect:/charities/" + charityId + "/events/" + eventId;
+    }
+
+
+    @DeleteMapping("/{eventId}")
+    public String deleteEvent(@PathVariable Long charityId, @PathVariable Long eventId) {
+        eventService.deleteEvent(eventId);
+        return "redirect:/charities/" + charityId + "/events";
+    }
+
 
     private Event mapToEvent(EventDto dto){
         return Event.builder()

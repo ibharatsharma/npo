@@ -85,6 +85,42 @@
                                name="contactInfo"
                                value="${charity.getContactInfo()}">
                     </div>
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Charity's Email Id:</label>
+                        @if(bindingResult != null && bindingResult.hasFieldErrors("email"))
+                            <p class="text-danger">${bindingResult.getFieldError("email").getDefaultMessage()}</p>
+                        @endif
+                        <input type="text"
+                               class="form-control"
+                               id="email"
+                               placeholder="Charity's email id"
+                               name="email"
+                               value="${charity.getEmail()}">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="password" class="form-label">Password:</label>
+                        @if(bindingResult != null && bindingResult.hasFieldErrors("password"))
+                            <p class="text-danger">${bindingResult.getFieldError("password").getDefaultMessage()}</p>
+                        @endif
+                        <input type="text"
+                               class="form-control"
+                               id="password"
+                               placeholder=""
+                               name="password"
+                               value="${charity.getPassword()}">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="confirmedPassword" class="form-label">Confirm Password:</label>
+                        @if(bindingResult != null && bindingResult.hasFieldErrors("confirmedPassword"))
+                            <p class="text-danger">${bindingResult.getFieldError("confirmedPassword").getDefaultMessage()}</p>
+                        @endif
+                        <input type="text"
+                               class="form-control"
+                               id="confirmedPassword"
+                               placeholder=""
+                               name="confirmedPassword"
+                               value="${charity.getConfirmedPassword()}">
+                    </div>
                     <hr/>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
