@@ -22,6 +22,7 @@ public class EventController {
     @GetMapping
     public String getAllEvents(@PathVariable Long charityId, Model model) {
         List<Event> events = eventService.findByCharityId(charityId);
+        model.addAttribute("charityId", charityId);
         model.addAttribute("eventCount", events.size());
         model.addAttribute("events", events);
         return "event/listEvents";

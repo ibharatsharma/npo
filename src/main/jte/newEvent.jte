@@ -7,6 +7,12 @@
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
+        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2 " role="group" aria-label="First group">
+                <a href="/charities/${charityId}" class="btn btn-primary me-1">Back to Dashboard</a>
+                <a href="/charities/${charityId}/events" class="btn btn-primary me-1">View All Events</a>
+            </div>
+        </div>
         <div class="jumbotron bg-primary-subtle p-5 rounded">
             <h1 class="display-4">Create New Event</h1>
             <p class="lead">Provide details to create an event.</p>

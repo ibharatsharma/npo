@@ -18,10 +18,7 @@
                     <a class="nav-link active" href="/charities/registration">Charity Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/events/new">New Event</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/members/registration">Reg</a>
+                    <a class="nav-link" href="/members/registration">Join U.K. Charities</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

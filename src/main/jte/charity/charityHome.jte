@@ -15,9 +15,16 @@
             </div>
             <div class="col-md-6">
                 <h3>Events</h3>
-                <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary">Create new Event</a>
+                <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group me-2 " role="group" aria-label="First group">
+                        <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary me-1">Create new Event</a>
+                        <a href="/charities/${charity.getId()}/events" class="btn btn-primary me-1">Show Events</a>
+                    </div>
+                </div>
                 @for(Event event : charity.getEvents())
                     @template.charity.eventRow(event = event)
+                @else
+                    <p>No upcoming Events!</p>
                 @endfor
             </div>
         </div>

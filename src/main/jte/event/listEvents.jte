@@ -4,10 +4,17 @@
 @param String currentUsername = null
 @param List<Event> events
 @param int eventCount
+@param long charityId
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
-        <h1 class="display-4">${eventCount} Events</h1>
+        <h1 class="display-4">Events</h1>
+        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2 " role="group" aria-label="First group">
+                <a href="/charities/${charityId}" class="btn btn-primary me-1">Back to Dashboard</a>
+                <a href="/charities/${charityId}/events/new" class="btn btn-primary me-1">Create new Event</a>
+            </div>
+        </div>
         @for(Event event: events)
             <div class="card mb-3" style="width: 100%;">
                 <div class="card-body">
@@ -18,6 +25,8 @@
                     <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
+        @else
+            <h3>No events!</h3>
         @endfor
     </div>
 `, title = "Events", currentUsername = currentUsername)
