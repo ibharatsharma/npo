@@ -6,6 +6,6 @@
         <h6 class="card-subtitle mb-2 text-body-secondary">Registration Number: ${charity.getRegistrationNumber()}</h6>
         <p class="card-text">${charity.getPurpose()}</p>
         <p class="card-text">Address: ${charity.getAddress()}</p>
-        <a href="#" class="card-link">More details about ${charity.getName()}</a>
+        <a href="/charities/${charity.getId()}" class="card-link">More details about ${charity.getName()}</a>
     </div>
 </div>
