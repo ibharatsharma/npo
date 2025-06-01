@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-6">
                 <h3>Events</h3>
-                <a href="#" class="btn btn-primary">Create new Event</a>
+                <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary">Create new Event</a>
                 @for(Event event : charity.getEvents())
                     @template.charity.eventRow(event = event)
                 @endfor

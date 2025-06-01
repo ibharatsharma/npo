@@ -1,5 +1,7 @@
 package com.npo.events;
 
+import com.npo.charity.CharityService;
+import com.npo.domain.Charity;
 import com.npo.domain.Event;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +16,15 @@ import java.util.Optional;
 public class EventService {
 
     private final EventDao eventDao;
+    private final CharityService charityService;
 
     @Transactional
-    public Event createEvent(Event event){
-        return eventDao.save(event);
+    public Event createEvent(Long charityId, final Event event){
+        Optional<Charity> charityOptional = charityService.findCharity(charityId);
+        return charityOptional.map(charity -> {
+                event.setCharity(charity);
+                return eventDao.save(event);
+                }).orElseThrow();
     }
 
     public Optional<Event> getEventById(Long eventId){
@@ -38,7 +45,8 @@ public class EventService {
     }
 
     public List<Event> findByCharityId(Long charityId) {
-        return List.of();
+        return eventDao.findByCharityId(charityId);
+        //return List.of();
     }
 
     public Optional<Event> findById(Long eventId) {

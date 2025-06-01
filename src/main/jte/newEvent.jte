@@ -3,6 +3,7 @@
 
 @param EventDto e
 @param String currentUsername = null
+@param Long charityId
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -10,7 +11,7 @@
             <h1 class="display-4">Create New Event</h1>
             <p class="lead">Provide details to create an event.</p>
             <hr class="my-4">
-            <form action="/events" method="POST">
+            <form action="/charities/${charityId}/events" method="POST">
                 <div class="row">
                     <div class="mb-3 mt-3">
                         <label for="name" class="form-label">Event Name:</label>

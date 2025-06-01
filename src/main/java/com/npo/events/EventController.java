@@ -22,8 +22,9 @@ public class EventController {
     @GetMapping
     public String getAllEvents(@PathVariable Long charityId, Model model) {
         List<Event> events = eventService.findByCharityId(charityId);
+        model.addAttribute("eventCount", events.size());
         model.addAttribute("events", events);
-        return "event-list"; // Returns event-list.html
+        return "event/listEvents";
     }
 
     @GetMapping("/{eventId}")
@@ -31,7 +32,7 @@ public class EventController {
         Event event = eventService.findById(eventId)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
         model.addAttribute("event", event);
-        return "event-details"; // Returns event-details.html
+        return "event/eventDetails";
     }
 
     @GetMapping("/new")
@@ -47,7 +48,7 @@ public class EventController {
         // persist into database.
         log.info("eventDto: {}", eventDto);
 
-        Event savedEvent = eventService.createEvent(mapToEvent(eventDto));
+        Event savedEvent = eventService.createEvent(charityId, mapToEvent(eventDto));
 
         if(savedEvent.getId() != null){
             model.addAttribute("e", eventDto);
