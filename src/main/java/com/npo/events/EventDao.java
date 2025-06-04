@@ -9,4 +9,8 @@ import java.util.List;
 public interface EventDao extends JpaRepository<Event, Long>, QueryByExampleExecutor<Event> {
 
     List<Event> findByCharityId(Long charityId);
+
+    List<Event> findByCharityIdOrderByStartDateAsc(Long charityId);
+
+
 }

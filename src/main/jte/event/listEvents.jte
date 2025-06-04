@@ -21,8 +21,8 @@
                     <h5 class="card-title">${event.getName()}</h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
                     <p class="card-text">${event.getDescription()}</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="#" class="btn btn-primary btn-sm">Update Event</a>
+                    <a href="#" class="btn btn-primary btn-sm">Show Details</a>
                 </div>
             </div>
         @else

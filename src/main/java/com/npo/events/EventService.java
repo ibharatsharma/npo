@@ -5,12 +5,14 @@ import com.npo.domain.Charity;
 import com.npo.domain.Event;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EventService {
@@ -36,6 +38,7 @@ public class EventService {
         eventDao.findAll(example);
     }
 
+    @Transactional
     public void updateEvent(Long charityId, Long eventId, Event event){
 
     }
@@ -45,15 +48,16 @@ public class EventService {
     }
 
     public List<Event> findByCharityId(Long charityId) {
-        return eventDao.findByCharityId(charityId);
-        //return List.of();
+        return eventDao.findByCharityIdOrderByStartDateAsc(charityId);
     }
 
     public Optional<Event> findById(Long eventId) {
-        return Optional.empty();
+        return eventDao.findById(eventId);
     }
 
+    @Transactional
     public void deleteEvent(Long eventId) {
-        throw new RuntimeException("implementation pending");
+        log.info("Deleting event with eventId={}", eventId);
+        eventDao.deleteById(eventId);
     }
 }
