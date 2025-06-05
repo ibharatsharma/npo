@@ -1,4 +1,5 @@
-@param String currentUsername = null
+@import com.npo.domain.WebUser
+@param WebUser user
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -6,4 +7,4 @@
             <h1 class="display-4">How did you end up here?</h1>
         </div>
     </div>
-`, title = "Not Found", currentUsername = currentUsername)
+`, title = "Not Found", user = user)

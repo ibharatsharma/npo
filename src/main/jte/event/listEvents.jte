@@ -1,7 +1,8 @@
 @import java.util.List
 @import com.npo.domain.Event
+@import com.npo.domain.WebUser
 
-@param String currentUsername = null
+@param WebUser user
 @param List<Event> events
 @param int eventCount
 @param long charityId
@@ -29,4 +30,4 @@
             <h3>No events!</h3>
         @endfor
     </div>
-`, title = "Events", currentUsername = currentUsername)
+`, title = "Events", user = user)

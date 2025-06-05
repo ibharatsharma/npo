@@ -1,7 +1,9 @@
 @import com.npo.domain.Charity
+@import com.npo.domain.WebUser
 
+@param WebUser user
 @param java.util.List<Charity> charities
-@param String currentUsername = null
+
 
 @template.layouts.base(content = @`
 
@@ -24,4 +26,4 @@
         </div>
     @endfor
     </div>
-`, title = "Charities", currentUsername = currentUsername)
+`, title = "Charities", user = user)

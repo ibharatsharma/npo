@@ -1,8 +1,5 @@
-@import com.npo.domain.WebUser
-
 @param gg.jte.Content content
 @param String title
-@param WebUser user
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    @template.fragments.header(user = user)
     <main>
         ${content}
     </main>

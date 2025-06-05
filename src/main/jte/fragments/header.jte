@@ -1,4 +1,6 @@
-@param String currentUsername = null
+@import com.npo.domain.WebUser
+
+@param WebUser user
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -20,9 +22,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/members/registration">Join U.K. Charities</a>
                 </li>
+                <li class="nav-item">
+                    <p style="color:white">${user.toString()}</p>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                @if(currentUsername == null)
+                @if(user.username().equalsIgnoreCase("NONE"))
                     <li class="nav-item badge text-bg-secondary">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
@@ -32,11 +37,9 @@
                     </li>
                 @endif
             </ul>
-            @if(currentUsername != null)
-                <div class="d-flex badge text-bg-secondary">
-                    ${currentUsername}
-                </div>
-            @endif
+            <div class="d-flex badge text-bg-secondary">
+                ${user.username()}
+            </div>
         </div>
     </div>
 </nav>

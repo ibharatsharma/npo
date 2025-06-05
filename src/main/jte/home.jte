@@ -1,4 +1,6 @@
-@param String currentUsername = null
+@import com.npo.domain.WebUser
+
+@param WebUser user
 
 @template.layouts.base(content = @`
 <div class="container mt-4">
@@ -8,7 +10,10 @@
         <hr class="my-4">
         <p>Explore the features or navigate using the menu above.</p>
         <a class="btn btn-primary btn-lg" href="/features" role="button">Explore Features</a>
-        <p>${currentUsername}</p>
+        <p>${user.toString()}</p>
+        @if(user.roles().contains("ADMIN"))
+            <h2>you are an admin</h2>
+        @endif
     </div>
 </div>
-`, title = "Home", currentUsername = currentUsername)
+`, title = "Home", user = user)

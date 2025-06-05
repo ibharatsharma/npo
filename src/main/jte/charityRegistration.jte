@@ -1,11 +1,13 @@
 @import com.npo.charity.CharityDto
 @import org.springframework.validation.BindingResult
+@import com.npo.domain.WebUser
 
+@param WebUser user
 @param CharityDto charity
 @param String error = null
 @param String message = null
 @param BindingResult bindingResult = null
-@param String currentUsername = null
+
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -127,4 +129,4 @@
             @endif
         </div>
     </div>
-`, title = "Charity Registration", currentUsername = currentUsername)
+`, title = "Charity Registration", user = user)

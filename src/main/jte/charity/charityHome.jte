@@ -1,7 +1,8 @@
 @import com.npo.domain.Charity
 @import com.npo.domain.Event
+@import com.npo.domain.WebUser
 
-@param String currentUsername = null
+@param WebUser user
 @param com.npo.domain.Charity charity
 
 @template.layouts.base(content = @`
@@ -29,4 +30,4 @@
             </div>
         </div>
     </div>
-`, title = "Home", currentUsername = currentUsername)
+`, title = "Home", user = user)

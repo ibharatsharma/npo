@@ -4,7 +4,7 @@
 @param String logoutMessage = null
 @param org.springframework.security.web.csrf.CsrfToken csrf = null
 
-@template.layouts.base(content = @`
+@template.layouts.unauthenticatedLayout(content = @`
 
     <div class="container mt-5 ">
         <div class="row justify-content-center">
