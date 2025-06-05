@@ -1,9 +1,10 @@
 @import com.npo.events.EventDto
 @import com.npo.common.DateFormatter
+@import com.npo.domain.WebUser
 
 @param EventDto e
-@param String currentUsername = null
 @param Long charityId
+@param WebUser user
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -58,4 +59,4 @@
             </form>
         </div>
     </div>
-`, title = "New Event", currentUsername = currentUsername)
+`, title = "New Event", user = user)
