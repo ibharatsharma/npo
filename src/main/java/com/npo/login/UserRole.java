@@ -1,5 +1,7 @@
 package com.npo.login;
 
+import java.util.Set;
+
 public enum UserRole {
     SUPER_ADMIN(1, "Has superuser privileges"),
     ADMIN(2, "Has full access"),
@@ -24,4 +26,13 @@ public enum UserRole {
     public String getDescription() {
         return description;
     }
+
+    public Set<String> charityLeadership(){
+        return Set.of(ADMIN.name(), LEADERSHIP.name(),LEAD.name());
+    }
+
+    public Set<String> charityEmployees(){
+        return Set.of(COMMS.name(),COORDINATOR.name(),WORKER.name());
+    }
+
 }

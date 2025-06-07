@@ -1,6 +1,7 @@
 @import com.npo.domain.Charity
 @import com.npo.domain.Event
 @import com.npo.domain.WebUser
+@import java.util.Set
 
 @param WebUser user
 @param com.npo.domain.Charity charity
@@ -15,9 +16,9 @@
                 <p><strong>Contact Information: </strong>${charity.getContactInfo()}</p>
             </div>
             <div class="col-md-6">
-                <h3>Events</h3>
+                <h3>Upcoming Events</h3>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2 " role="group" aria-label="First group">
+                    <div class="btn-group me-2 " role="group" aria-label="Toolbar">
                         <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary me-1">Create new Event</a>
                         <a href="/charities/${charity.getId()}/events" class="btn btn-primary me-1">Show Events</a>
                     </div>

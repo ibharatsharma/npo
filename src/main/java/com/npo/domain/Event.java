@@ -31,4 +31,6 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "charity_id", nullable = false)
     private Charity charity;
+    @Column(length = 500)
+    private String note;
 }

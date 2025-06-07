@@ -33,7 +33,7 @@ public class EventController {
         Event event = eventService.findById(eventId)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
         model.addAttribute("event", event);
-        return "event/eventDetails";
+        return "event/eventDetail";
     }
 
     @GetMapping("/new")
