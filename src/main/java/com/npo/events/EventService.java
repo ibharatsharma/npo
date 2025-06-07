@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class EventService {
     public Event createEvent(Long charityId, final Event event){
         Optional<Charity> charityOptional = charityService.findCharity(charityId);
         return charityOptional.map(charity -> {
-                event.setCharity(charity);
+                //event.setCharity(charity);
                 return eventDao.save(event);
                 }).orElseThrow();
     }
@@ -48,7 +49,9 @@ public class EventService {
     }
 
     public List<Event> findByCharityId(Long charityId) {
-        return eventDao.findByCharityIdOrderByStartDateAsc(charityId);
+        return charityService.findCharity(charityId).map(Charity::getEvents)
+                .orElse(Collections.emptyList());
+        //return eventDao.findfindByCharityIdOrderByStartDateAsc(charityId);
     }
 
     public Optional<Event> findById(Long eventId) {

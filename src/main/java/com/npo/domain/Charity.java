@@ -1,12 +1,6 @@
 package com.npo.domain;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -29,6 +23,7 @@ public class Charity {
     private String address;             // Physical address of the charity
     private String contactInfo;         // Phone number or email for communication
     private boolean isActive;
-    @OneToMany(mappedBy = "charity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "charity_id") // FK in Event table
     private List<Event> events;
 }

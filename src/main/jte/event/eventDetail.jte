@@ -4,6 +4,7 @@
 
 @param WebUser user
 @param Event event
+@param Long charityId
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
@@ -21,8 +22,8 @@
                 <p class="card-text"><strong>Organizer: </strong>${(event.getIsPrivate() == null || event.getIsPrivate()) ? "Private" : "Public"}</p>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 " role="group" aria-label="First group">
-                        <a href="/charities/${event.getCharity().getId()}" class="btn btn-primary me-1 btn-sm">Back to Dashboard</a>
-                        <a href="/charities/${event.getCharity().getId()}/events" class="btn btn-primary me-1 btn-sm">Show Events</a>
+                        <a href="/charities/${charityId}" class="btn btn-primary me-1 btn-sm">Back to Dashboard</a>
+                        <a href="/charities/${charityId}/events" class="btn btn-primary me-1 btn-sm">Show Events</a>
                     </div>
                 </div>
             </div>
