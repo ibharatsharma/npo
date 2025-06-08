@@ -20,7 +20,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/error").permitAll() // home page access for everyone
+                        .requestMatchers("/", "/login", "/error","/webjars/**").permitAll() // home page access for everyone
                         .requestMatchers("/ott/sent").permitAll() // ott sent page
                         .requestMatchers("/login/ott").permitAll()
                         .requestMatchers("/members/registration").permitAll()

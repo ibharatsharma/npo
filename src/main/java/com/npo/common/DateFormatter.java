@@ -32,8 +32,20 @@ public class DateFormatter {
     }
 
     public static String duration(LocalDateTime startDate, LocalDateTime endDate){
+
         Duration duration = Duration.between(startDate, endDate);
-        return String.format("%d Hours, %d Minutes",duration.toHoursPart(), duration.toMinutesPart());
+
+        if(duration.toMinutesPart() > 0 && duration.toHoursPart() == 0){
+            return String.format("%d Minutes",duration.toMinutesPart());
+        }else if(duration.toMinutesPart() == 0 && duration.toHoursPart() == 1){
+            return String.format("%d Hour",duration.toHoursPart());
+        }else if(duration.toMinutesPart() == 0 && duration.toHoursPart() > 1){
+            return String.format("%d Hours",duration.toHoursPart());
+        } else if(duration.toMinutesPart() == 1 && duration.toHoursPart() == 1) {
+            return String.format("%d Hour, %d Minute", duration.toHoursPart(), duration.toMinutesPart());
+        } else {
+            return String.format("%d Hours, %d Minutes", duration.toHoursPart(), duration.toMinutesPart());
+        }
     }
 
 }
