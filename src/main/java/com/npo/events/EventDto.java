@@ -1,5 +1,6 @@
 package com.npo.events;
 
+import com.npo.domain.EventRecurrenceType;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,6 +14,10 @@ public class EventDto {
 
     private String name;
     private String description;
+    // recurrence
+    private boolean isRecurring;
+    private EventRecurrenceType recurrenceType;
+
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String location;

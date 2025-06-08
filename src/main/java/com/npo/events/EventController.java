@@ -44,7 +44,7 @@ public class EventController {
         var event = new EventDto();
         model.addAttribute("e", event);
         model.addAttribute("charityId", charityId);
-        return "newEvent";
+        return "event/newEvent";
     }
 
     @PostMapping
@@ -71,7 +71,7 @@ public class EventController {
         }else{
             model.addAttribute("e", eventDto);
             model.addAttribute("charityId", charityId);
-            return "newEvent";
+            return "event/newEvent";
         }
 
 
