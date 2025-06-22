@@ -1,7 +1,6 @@
 package com.npo.events;
 
 import com.npo.domain.Event;
-import com.npo.domain.EventRecurrence;
 import com.npo.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +32,7 @@ public class EventController {
     public String getEvent(@PathVariable Long charityId, @PathVariable Long eventId, Model model) {
         Event event = eventService.findById(eventId)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found"));
-        log.info("getEvent event={}", event);
+        log.info("getEvent event={}", event.getId());
         model.addAttribute("charityId", charityId);
         model.addAttribute("event", event);
         return "event/eventDetail";
@@ -51,16 +50,7 @@ public class EventController {
     public String processEventForm(@PathVariable Long charityId, @Validated EventDto eventDto, final Model model) {
         // persist into database.
         log.info("eventDto: {}", eventDto);
-
-        Event event = mapToEvent(eventDto);
-        EventRecurrence recurrence = new EventRecurrence();
-        recurrence.setNote("Just a test event note.");
-        recurrence.setLocation("Pyramid Anderston");
-        recurrence.setStartDate(event.getStartDate());
-        recurrence.setEndDate(event.getEndDate());
-        event.setRecurrences(List.of(recurrence));
-
-        Event savedEvent = eventService.createEvent(charityId, event);
+        Event savedEvent = eventService.createEvent(charityId, eventDto);
 
         if(savedEvent.getId() != null){
             // event was created successfully
@@ -98,17 +88,6 @@ public class EventController {
     }
 
 
-    private Event mapToEvent(EventDto dto){
-        return Event.builder()
-                .name(dto.getName())
-                .description(dto.getDescription())
-                .startDate(dto.getStartDate())
-                .endDate(dto.getEndDate())
-                .location(dto.getLocation())
-                .organizer(dto.getOrganizer())
-                .isPrivate(dto.getIsPrivate())
-                .category(dto.getCategory())
-                .build();
-    }
+
 
 }

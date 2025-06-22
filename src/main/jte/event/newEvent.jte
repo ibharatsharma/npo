@@ -1,6 +1,7 @@
 @import com.npo.events.EventDto
 @import com.npo.common.DateFormatter
 @import com.npo.domain.WebUser
+@import com.npo.domain.EventRecurrenceType
 
 @param EventDto e
 @param Long charityId
@@ -27,7 +28,7 @@
                                id="name"
                                placeholder="Enter Event name"
                                name="name"
-                               value="${e.getName()}">
+                               value="${e.getName()}" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="description" class="form-label">Description:</label>
@@ -37,6 +38,35 @@
                                name="description">${e.getDescription()}</textarea>
                     </div>
                 </div>
+                <div class="mb-3 mt-3">
+                    <label for="location" class="form-label">Event Location:</label>
+                    <input type="text"
+                           class="form-control"
+                           id="location"
+                           placeholder="Event location"
+                           name="location"
+                           value="${e.getName()}" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="isRecurring" class="form-label">Make Recurring Event:</label>
+                    <input type="checkbox"
+                           class="form-check-input"
+                           id="isRecurring"
+                           name="isRecurring"
+                           value="${e.getIsRecurring()}">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="recurrenceType" class="form-label">Recurrence:</label>
+                    <select class="form-select"
+                           id="recurrenceType"
+                           name="recurrenceType">
+                        @for(EventRecurrenceType type : EventRecurrenceType.values())
+                            <option>${type.name()}</option>
+                        @endfor
+                    </select>
+                </div>
+
                 <div class="col-md-6 mb-3">
                     <label for="startDate" class="form-label">Start Date:</label>
                     <input type="datetime-local"
@@ -44,7 +74,8 @@
                            id="startDate"
                            placeholder="Start Date"
                            name="startDate"
-                           value="${DateFormatter.formatTimestamp(e.getStartDate(),"dd-MM-yyyy HH:mm:ss")}">
+                           value="${DateFormatter.formatTimestamp(e.getStartDate(),"dd-MM-yyyy HH:mm:ss")}"
+                           required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="endDate" class="form-label">End Date:</label>
@@ -53,7 +84,8 @@
                            id="endDate"
                            placeholder="End Date"
                            name="endDate"
-                           value="${DateFormatter.formatTimestamp(e.getEndDate(),"dd-MM-yyyy HH:mm:ss")}">
+                           value="${DateFormatter.formatTimestamp(e.getEndDate(),"dd-MM-yyyy HH:mm:ss")}"
+                           required>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

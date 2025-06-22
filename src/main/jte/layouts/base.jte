@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
     @template.fragments.header(user = user)

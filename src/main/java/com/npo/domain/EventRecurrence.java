@@ -24,7 +24,7 @@ public class EventRecurrence {
     private String location;
     @Column(length = 500)
     private String note;
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
-    private Event event;*/
+    private Event event;
 }

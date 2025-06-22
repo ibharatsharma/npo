@@ -19,7 +19,7 @@
                 <h3>Upcoming Events</h3>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 " role="group" aria-label="Toolbar">
-                        <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary me-1">Create new Event</a>
+                        <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary me-1"><i class="bi bi-pencil-square"></i> New Event</a>
                         <a href="/charities/${charity.getId()}/events" class="btn btn-primary me-1">Show Events</a>
                     </div>
                 </div>

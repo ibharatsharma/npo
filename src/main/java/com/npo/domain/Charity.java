@@ -23,7 +23,10 @@ public class Charity {
     private String address;             // Physical address of the charity
     private String contactInfo;         // Phone number or email for communication
     private boolean isActive;
+    // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    // @JoinColumn(name = "charity_id") // FK in Event table
+    // private List<Event> events;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "charity_id") // FK in Event table
-    private List<Event> events;
+    @JoinColumn(name = "campaign_id") // FK in Event table
+    private List<Campaign> campaigns;
 }

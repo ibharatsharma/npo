@@ -29,13 +29,17 @@ public class Event {
     private String organizer;
     private Boolean isPrivate;
     private String category;
-    //@ManyToOne
-    //@JoinColumn(name = "charity_id", nullable = false)
-    //private Charity charity;
-    @Column(length = 500)
     private String note;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "charity_id", nullable = false)
+    private Charity charity;
+    @Column(length = 500)
     //    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "event_id") // FK in event_reoccurrence table
     private List<EventRecurrence> recurrences;
+    @ManyToOne
+    @JoinColumn(name = "campaign_id", nullable = false)
+    private Campaign campaign;
+
 }
