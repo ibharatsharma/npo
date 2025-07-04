@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CharityDao extends JpaRepository<Charity, Long> {
 
-    public Optional<Charity> findByName(String name);
+    Optional<Charity> findByName(String name);
 }

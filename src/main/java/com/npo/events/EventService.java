@@ -1,10 +1,7 @@
 package com.npo.events;
 
 import com.npo.charity.CharityService;
-import com.npo.domain.Charity;
-import com.npo.domain.Event;
-import com.npo.domain.EventRecurrence;
-import com.npo.domain.EventRecurrenceType;
+import com.npo.domain.*;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +12,12 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
+
 public class EventService {
 
     private final EventDao eventDao;
@@ -31,7 +30,7 @@ public class EventService {
 
         Optional<Charity> charityOptional = charityService.findCharity(charityId);
         return charityOptional.map(charity -> {
-                event.setCharity(charity);
+                event.setCampaign(new Campaign());
                 populateEventRecurrences(eventDto, event);
                 log.info("Event has {} recurrences", event.getRecurrences().size());
                 return eventDao.save(event);
@@ -95,8 +94,9 @@ public class EventService {
     }
 
     public List<Event> findByCharityId(Long charityId) {
-        return charityService.findCharity(charityId).map(Charity::getEvents)
-                .orElse(Collections.emptyList());
+        /*return charityService.findCharity(charityId).map(Charity::getEvents)
+                .orElse(Collections.emptyList());*/
+        return Collections.emptyList();
         //return eventDao.findfindByCharityIdOrderByStartDateAsc(charityId);
     }
 

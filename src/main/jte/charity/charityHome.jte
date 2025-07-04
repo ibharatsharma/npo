@@ -23,11 +23,13 @@
                         <a href="/charities/${charity.getId()}/events" class="btn btn-primary me-1">Show Events</a>
                     </div>
                 </div>
+                <%--
                 @for(Event event : charity.getEvents())
                     @template.charity.eventRow(event = event)
                 @else
                     <p>No upcoming Events!</p>
                 @endfor
+                --%>
             </div>
         </div>
     </div>

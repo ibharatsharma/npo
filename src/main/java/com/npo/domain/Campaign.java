@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,22 @@ public class Campaign {
     @Column(length = 500)
     private String description;
     private Boolean isClosed;
-    @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Event> events;
+
+    // Bidirectional OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "campaign_id")
+    private List<Event> events = new ArrayList<>();
+
+    // Convenience method (optional but helpful)
+    public void addEvent(Event event) {
+        events.add(event);
+        event.setCampaign(this);
+    }
+
+    public void removeEvent(Event event) {
+        events.remove(event);
+        event.setCampaign(null);
+    }
+
 
 }
