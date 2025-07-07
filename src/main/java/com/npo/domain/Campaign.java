@@ -30,7 +30,7 @@ public class Campaign {
     private Boolean isClosed;
 
     // Bidirectional OneToMany
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "campaign_id")
     private List<Event> events = new ArrayList<>();
 

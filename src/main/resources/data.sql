@@ -13,5 +13,9 @@ insert into authority (id, name) values
 (4, 'LEAD'),
 (5, 'COORDINATOR'),
 (6, 'WORKER'),
-(7, 'COMMS')
-on conflict(id) do nothing;
+(7, 'COMMS');
+
+
+insert into user_authorities values(1,2);
+
+select * from site_user;
