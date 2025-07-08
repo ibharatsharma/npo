@@ -22,8 +22,7 @@ import java.util.UUID;
 @Table(name = "campaign")
 public class Campaign {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id; // provided uuid
     private String title;
     @Column(length = 500)
     private String description;

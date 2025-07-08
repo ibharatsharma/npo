@@ -33,10 +33,20 @@ public class CampaignService {
         }).orElseThrow(() -> new RuntimeException("Campaign could not be persisted"));
     }
 
+    public void deleteById(final String id){
+        if(id == null){
+            throw new IllegalArgumentException("Campaign id was null");
+        }
+        campaignDao.deleteById(id);
+    }
+
     private Campaign dtoToCampaign(CampaignDto dto){
         return Campaign.builder()
+                .id(UUID.randomUUID().toString())
                 .title(dto.getCampaignTitle())
                 .description(dto.getDescription())
                 .build();
     }
+
+
 }

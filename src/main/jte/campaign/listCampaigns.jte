@@ -21,18 +21,10 @@
             <tr>
                 <th>Campaign Title</th>
                 <th>Description</th>
+                <th>Actions</th>
             </tr>
             </thead>
-            <tbody>
-            @for(Campaign campaign: campaigns)
-            <tr>
-                <td>${campaign.getTitle()}</td>
-                <td>${campaign.getDescription()}</td>
-            </tr>
-            @else
-            <h3>No Campaigns!</h3>
-            @endfor
-            </tbody>
+            @template.campaign.campaignRow(campaigns = campaigns, charityId = charityId)
         </table>
     </div>
 `, title = "Campaigns", user = user)

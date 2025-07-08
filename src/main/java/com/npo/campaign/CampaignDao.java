@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CampaignDao extends JpaRepository<Campaign, Long> {
+public interface CampaignDao extends JpaRepository<Campaign, String> {
 
     List<Campaign> findByCharityId(Long charityId);
 }
