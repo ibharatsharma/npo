@@ -29,6 +29,10 @@ public class Campaign {
     private String description;
     private Boolean isClosed;
 
+    @ManyToOne
+    @JoinColumn(name = "charity_id", nullable = false)
+    private Charity charity;
+
     // Bidirectional OneToMany
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "campaign_id")

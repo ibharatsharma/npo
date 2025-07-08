@@ -24,7 +24,6 @@ public class Charity {
     private String address;             // Physical address of the charity
     private String contactInfo;         // Phone number or email for communication
     private boolean isActive;
-    @OneToMany
-    @JoinColumn(name = "charity_id") // foreign key in Campaign table
+    @OneToMany(mappedBy = "charity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Campaign> campaigns = new ArrayList<>();
 }
