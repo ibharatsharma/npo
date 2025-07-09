@@ -8,9 +8,10 @@
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
-        <h1 class="display-4">Home Of ${charity.getName()}</h1>
         <div class="row">
             <div class="col-md-6">
+                <h3>Home Of ${charity.getName()}</h3>
+                <hr/>
                 <p><strong>Address: </strong>${charity.getAddress()}</p>
                 <p><strong>Registration Number: </strong>${charity.getRegistrationNumber()}</p>
                 <p><strong>Contact Information: </strong>${charity.getContactInfo()}</p>

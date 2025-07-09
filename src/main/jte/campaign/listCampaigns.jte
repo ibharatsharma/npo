@@ -9,7 +9,7 @@
 
 @template.layouts.base(content = @`
     <div class="container mt-4 border border-dark">
-        <h1 class="display-4">Active Campaigns</h1>
+        <h1 class="display-6">Active Campaigns</h1>
         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2 " role="group" aria-label="First group">
                 <a href="/charities/${charityId}" class="btn btn-primary me-1"><i class="bi bi-house-door"></i></a>
