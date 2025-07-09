@@ -16,7 +16,7 @@
                 <p><strong>Contact Information: </strong>${charity.getContactInfo()}</p>
             </div>
             <div class="col-md-6">
-                <h3>Upcoming Events</h3>
+                <h3>Active Campaigns</h3>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 " role="group" aria-label="Toolbar">
                         <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary me-1"><i class="bi bi-pencil-square"></i> New Event</a>
@@ -24,6 +24,12 @@
                         <a href="/charities/${charity.getId()}/events" class="btn btn-primary me-1">Show Events</a>
                     </div>
                 </div>
+
+                <div hx-get="/charities/${charity.getId()}/campaigns?internal=true"
+                     hx-trigger="load delay:1s"
+                     hx-swap="outerHTML">
+                </div>
+
                 <%--
                 @for(Event event : charity.getEvents())
                     @template.charity.eventRow(event = event)

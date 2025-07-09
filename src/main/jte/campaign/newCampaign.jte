@@ -42,4 +42,4 @@
             </form>
         </div>
     </div>
-`, title = "New Event", user = user)
+`, title = "New Campaign", user = user)

@@ -1,6 +1,7 @@
 package com.npo.campaign;
 
 import com.npo.domain.Campaign;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -21,11 +23,17 @@ public class CampaignController {
     private final CampaignService campaignService;
 
     @GetMapping
-    public String getAllCampaigns(@PathVariable Long charityId, Model model) {
+    public String getAllCampaigns(@PathVariable Long charityId,
+                                  @RequestParam(name = "internal", defaultValue = "false") Boolean internal,
+                                  Model model) {
+        log.info("Internal={}", internal);
         List<Campaign> campaigns = campaignService.findByCharityId(charityId);
         model.addAttribute("charityId", charityId);
         model.addAttribute("campaignCount", campaigns.size());
         model.addAttribute("campaigns", campaigns);
+        if(internal){
+            return "campaign/campaignTable";
+        }
         return "campaign/listCampaigns";
     }
 
@@ -54,6 +62,17 @@ public class CampaignController {
             model.addAttribute("charityId", charityId);
             return "campaign/newCampaign";
         }
+    }
+
+    @GetMapping("{id}")
+    public String findById(@PathVariable Long charityId, @PathVariable("id") String id, Model model){
+        Optional<Campaign> optionalCampaign = campaignService.findById(id);
+        optionalCampaign.map(campaign -> {
+            model.addAttribute("charityId", charityId);
+            model.addAttribute("campaign", campaign);
+            return campaign;
+        });
+        return "campaign/campaignDetail";
     }
 
     @DeleteMapping("{id}")

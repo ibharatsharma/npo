@@ -7,22 +7,27 @@
 <tbody>
 @for(Campaign campaign: campaigns)
     <tr id="row-${campaign.getId()}">
-        <td>${campaign.getTitle()}</td>
+        <td><a href="/charities/${charityId}/campaigns/${campaign.getId()}">${campaign.getTitle()}</a></td>
         <td>${campaign.getDescription()}</td>
         <td>
-            <button
+            <button class="btn btn-outline-secondary">
+                <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-outline-secondary"
                     hx-delete="/charities/${charityId}/campaigns/${campaign.getId()}"
                     hx-target="#row-${campaign.getId()}"
-                    hx-swap="delete"
+                    hx-swap="delete delay:3s"
                     hx-confirm="Are you sure you want to delete '${campaign.getTitle()}' campaign?">
-                Delete
+                <i class="bi bi-archive"></i>
             </button>
         </td>
     </tr>
 @else
     <tr>
         <td colspan="3">
-            <strong>No Campaigns!</strong>
+            <div class="border mx-auto shadow ps-3" style="width:150px">
+                <strong class="text-info">No Campaigns!</strong>
+            </div>
         </td>
     </tr>
 @endfor
