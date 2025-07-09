@@ -28,6 +28,7 @@
                 <div hx-get="/charities/${charity.getId()}/campaigns?internal=true"
                      hx-trigger="load delay:1s"
                      hx-swap="outerHTML">
+                    <img class="htmx-indicator" src="/static/spinner.gif">
                 </div>
 
                 <%--

@@ -11,7 +11,7 @@
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
-        <div class="jumbotron bg-light p-5 rounded">
+        <div class="jumbotron bg-light p-5 rounded shadow">
             <h1 class="display-4">Charity Registration</h1>
             <p class="lead">Register your charity with us.</p>
             <hr class="my-4">

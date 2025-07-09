@@ -15,7 +15,7 @@
                 <a href="/charities/${charityId}/campaigns" class="btn btn-primary me-1">View All Campaigns</a>
             </div>
         </div>
-        <div class="jumbotron bg-primary-subtle p-5 rounded">
+        <div class="jumbotron bg-primary-subtle p-5 rounded shadow">
             <h1 class="display-4">Create a new Campaign</h1>
             <p class="lead">Provide details to create a new Campaign.</p>
             <hr class="my-4">
