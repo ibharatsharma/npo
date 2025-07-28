@@ -34,17 +34,15 @@
         </div>
         <ol class="list-group list-group-numbered">
         @for(EventRecurrence r : event.getRecurrences())
-
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">${event.getName()}</div>
-                        <strong>Location: </strong>${r.getLocation()}<br/>
-                        <strong>Date & Time: </strong>${DateFormatter.formatTimestampWithDayOfWeek(r.getStartDate())} to ${DateFormatter.formatTimestampWithDayOfWeek(r.getEndDate())}<br/>
-                        <strong>Duration: </strong> <span class="badge text-bg-primary rounded-pill">${DateFormatter.duration(r.getStartDate(), r.getEndDate())}</span><br/>
-                        <strong>Notes: </strong>${r.getNote()}
-                    </div>
-
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">${event.getName()}</div>
+                    <strong>Location: </strong>${r.getLocation()}<br/>
+                    <strong>Date & Time: </strong>${DateFormatter.formatTimestampWithDayOfWeek(r.getStartDate())} to ${DateFormatter.formatTimestampWithDayOfWeek(r.getEndDate())}<br/>
+                    <strong>Duration: </strong> <span class="badge text-bg-primary rounded-pill">${DateFormatter.duration(r.getStartDate(), r.getEndDate())}</span><br/>
+                    <strong>Notes: </strong>${r.getNote()}
+                </div>
+            </li>
         @endfor
         </ol>
     @else

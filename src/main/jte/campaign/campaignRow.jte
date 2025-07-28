@@ -6,7 +6,12 @@
 
 <tbody>
 @for(Campaign campaign: campaigns)
-    <tr id="row-${campaign.getId()}">
+    <tr id="row-${campaign.getId()}"
+        hx-get="/charities/${charityId}/campaigns/${campaign.getId()}/events"
+        hx-trigger="click"
+        hx-target="#campaign-events"
+        hx-swap="innerHTML"
+    >
         <td><a href="/charities/${charityId}/campaigns/${campaign.getId()}">${campaign.getTitle()}</a></td>
         <td>${campaign.getDescription()}</td>
         <td>

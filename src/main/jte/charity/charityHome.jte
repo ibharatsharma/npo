@@ -8,15 +8,14 @@
 
 @template.layouts.base(content = @`
     <div class="container mt-4">
-        <div class="row">
+        <div class="row bg-secondary-subtle">
             @template.charity.charityDetails(charity = charity)
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Active Campaigns</h3>
+        <div class="row mt-4">
+            <div class="col-md-6 bg-secondary-subtle">
+                <span class="fs-5">Active Campaigns</span>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2 " role="group" aria-label="Toolbar">
-                        <a href="/charities/${charity.getId()}/events/new" class="btn btn-primary me-1"><i class="bi bi-pencil-square"></i> New Event</a>
                         <a href="/charities/${charity.getId()}/campaigns" class="btn btn-primary me-1">Campaigns</a>
                         <a href="/charities/${charity.getId()}/events" class="btn btn-primary me-1">Show Events</a>
                     </div>
@@ -28,7 +27,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                Show details of events here
+                <div id="campaign-events">Show details of events here</div>
             </div>
         </div>
     </div>
