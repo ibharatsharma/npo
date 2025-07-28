@@ -10,7 +10,9 @@
         <td><a href="/charities/${charityId}/campaigns/${campaign.getId()}">${campaign.getTitle()}</a></td>
         <td>${campaign.getDescription()}</td>
         <td>
-            <button class="btn btn-outline-secondary">
+            <button class="btn btn-outline-secondary"
+            hx-put="/charities/${charityId}/campaigns/${campaign.getId()}"
+            hx-target="">
                 <i class="bi bi-pencil"></i>
             </button>
             <button class="btn btn-outline-secondary"

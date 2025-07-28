@@ -1,7 +1,6 @@
 package com.npo.events;
 
 import com.npo.campaign.CampaignDao;
-import com.npo.charity.CharityDao;
 import com.npo.charity.CharityService;
 import com.npo.domain.*;
 import jakarta.transaction.Transactional;
@@ -89,7 +88,23 @@ public class EventService {
     }
 
     @Transactional
-    public void updateEvent(Long charityId, Long eventId, Event event){
+    public Event updateEvent(Long charityId, Long eventId, String campaignId, Event event){
+        if(charityId == null || eventId == null || campaignId == null || event == null){
+            throw new IllegalArgumentException("Missing mandatory parameters");
+        }
+        Optional<Event> eventOptional = eventDao.findById(eventId);
+        return eventOptional.map(event1 -> {
+            event1.setName(event.getName());
+            event1.setDescription(event.getDescription());
+            event1.setStartDate(event.getStartDate());
+            event1.setEndDate(event.getEndDate());
+            event1.setLocation(event.getLocation());
+            event1.setOrganizer(event.getOrganizer());
+            event1.setIsPrivate(event.getIsPrivate());
+            event1.setCategory(event.getCategory());
+            event1.setNote(event.getNote());
+            return eventDao.save(event1);
+        }).orElseThrow(() -> new RuntimeException("Event doesn't exist."));
 
     }
 

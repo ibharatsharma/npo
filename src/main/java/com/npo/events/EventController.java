@@ -41,6 +41,7 @@ public class EventController {
         log.info("getEvent event={}", event.getId());
         model.addAttribute("charityId", charityId);
         model.addAttribute("event", event);
+        model.addAttribute("campaignId", campaignId);
         return "event/eventDetail";
     }
 
@@ -67,6 +68,7 @@ public class EventController {
         if(savedEvent.getId() != null){
             // event was created successfully
             model.addAttribute("charityId", charityId);
+            model.addAttribute("campaignId", campaignId);
             model.addAttribute("e", eventDto);
             model.addAttribute("message", "Event Created!");
             return "redirect:/charities/" + charityId + "/campaigns/" + campaignId;
@@ -83,7 +85,8 @@ public class EventController {
                               @PathVariable String campaignId,
                               @PathVariable Long eventId,
                               @ModelAttribute Event event) {
-        eventService.updateEvent(charityId, eventId, event);
+        Event updatedEvent = eventService.updateEvent(charityId, eventId, campaignId, event);
+        log.info("Event updated successfully: id={} - name={}", updatedEvent.getId(), updatedEvent.getName());
         return "redirect:/charities/" + charityId + "/events/" + eventId;
     }
 

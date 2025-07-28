@@ -36,7 +36,7 @@
             </div>
             <div class="col-sm-6">
                 <div hx-get="/charities/${charityId}/campaigns/${campaign.getId()}/events"
-                     hx-trigger="load delay:1s"
+                     hx-trigger="load delay:300ms"
                      hx-swap="outerHTML">
                     <img class="htmx-indicator" src="/static/spinner.gif">
                 </div>

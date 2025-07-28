@@ -64,6 +64,25 @@ public class CampaignController {
         }
     }
 
+    @PutMapping("/{campaignId}")
+    public String editCampaignForm(@PathVariable Long charityId,
+                                   @PathVariable("campaignId") String campaignId,
+                                   final Model model) {
+        Optional<Campaign> campaignOptional = campaignService.findById(campaignId);
+
+        return campaignOptional.map(campaign -> {
+            CampaignDto dto = new CampaignDto();
+            dto.setCampaignId(campaign.getId());
+            dto.setCampaignTitle(campaign.getTitle());
+            dto.setDescription(campaign.getDescription());
+            model.addAttribute("dto", dto);
+            model.addAttribute("charityId", charityId);
+            model.addAttribute("campaignId", campaignId);
+            return "campaign/newCampaign";
+        }).orElseThrow(() -> new RuntimeException("Error editing Campaign"));
+
+    }
+
     @GetMapping("{id}")
     public String findById(@PathVariable Long charityId, @PathVariable("id") String id, Model model){
         Optional<Campaign> optionalCampaign = campaignService.findById(id);
